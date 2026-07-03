@@ -18,4 +18,6 @@ add_executable(Parcial_Japet
         src/Cola.cpp
         src/PlanificadorMLQ.cpp
         src/Proceso.cpp
+        src/RR.cpp
+        src/SJF.cpp
 )

@@ -15,7 +15,7 @@ class RR : public PoliticaPlanificacion {
 public:
   explicit RR(int quantum);
   Proceso*
-  seleccionar(std, deque<Proceso *> &listos) override;
+  seleccionar(std:: deque<Proceso *> &listos) override;
   int quantum() const override;
   std::string nombre() const override;
 };

@@ -15,7 +15,7 @@ class SJF: public
 PoliticaPlanificacion {
 public:
     Proceso*
-    seleccionar(std, deque<Proceso *> &listos) override;
+    seleccionar(std:: deque<Proceso *> &listos) override;
     std::string nombre() const override;
 };
 
