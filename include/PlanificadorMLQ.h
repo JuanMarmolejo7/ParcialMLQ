@@ -21,7 +21,7 @@ class PlanificadorMLQ {
     std::vector<Cola*> colas; // Colas ordenadas por nivel indice=nivel-1
 
     Cola* colaDe(int nivel); //Devuelve la cola con ese nivel
-    Cola* colaMasPrioritario(); //Cola no vacio con menor nivel o nullpointer
+    Cola* colaMasPrioritaria(); //Cola no vacio con menor nivel o nullpointer
 
 public:
     PlanificadorMLQ(std::vector<Proceso*> procesos, std::vector<Cola*> colas);

@@ -15,4 +15,7 @@ add_executable(Parcial_Japet
         include/RR.h
         include/SJF.h
         src/ArchivoIO.cpp
+        src/Cola.cpp
+        src/PlanificadorMLQ.cpp
+        src/Proceso.cpp
 )

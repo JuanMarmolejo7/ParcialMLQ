@@ -70,7 +70,5 @@ namespace ArchivoIO {
 
         }
         out.close();
-
-
     }
 }
