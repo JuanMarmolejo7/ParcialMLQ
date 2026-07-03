@@ -1,0 +1,8 @@
+# Escenario 1, donde todos los procesos llegan en el instante t=0
+#Formato etiqueta;BT;AT;Q;Pr (Pr: prioridad 5>1)
+
+A;6;0;1;6
+B;9;0;1;4
+C;10;0;2;3
+D;7;0;2;2
+E;5;0;3;1

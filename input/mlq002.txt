@@ -1,0 +1,9 @@
+#Escenario 2 : llegadas escalonadas para expropiar entre colas
+# Un proceso corre en la cola SJF(3) y lo expropian cuando llegan procesos a las colas 1 y 2
+##Formato etiqueta;BT;AT;Q;Pr (Pr: prioridad 5>1)
+
+A;4;0;3;1
+B;3;2;2;2
+C;2;3;1;5
+D;5;5;1;4
+E;3;6;2;3

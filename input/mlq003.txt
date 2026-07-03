@@ -1,0 +1,8 @@
+#Escenario 3: carga concentrada en una sola cola (Cola 1 RR(1)) Sirve para obervar el comportamiento del RR quantum 1
+#Formato etiqueta;BT;AT;Q;Pr (Pr: prioridad 5>1)
+
+A;5;0;1;3
+B;4;1;1;2
+C;6;2;1;5
+D;3;3;1;1
+E;2;4;1;4

@@ -12,4 +12,7 @@ add_executable(Parcial_Japet
         include/PlanificadorMLQ.h
         include/PoliticaPlanificacion.h
         include/Proceso.h
+        include/RR.h
+        include/SJF.h
+        src/ArchivoIO.cpp
 )
