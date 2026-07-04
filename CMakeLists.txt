@@ -22,3 +22,5 @@ add_executable(Parcial_Japet
         src/SJF.cpp
         src/main.cpp
 )
+
+target_link_options(Parcial_Japet PRIVATE -static-libgcc -static-libstdc++ -static)
