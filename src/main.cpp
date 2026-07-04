@@ -1,18 +1,73 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+#include "Proceso.h"
+#include "Cola.h"
+#include  "RR.h"
+#include "SJF.h"
+#include "PlanificadorMLQ.h"
+#include "ArchivoIO.h"
 
-int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
+//Simulador MLQ esquema RR(1) + RR(3) + SJF_H
 
-    const auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+int main(int argc,char* argv[]) {
+    std::string entrada=(argc>1) ? argv[1]: "input/mlq001.txt";
+    std::string salida=(argc>2) ? argv[2]: "output/mlq001_out.txt";
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+    try {
+        //Leer los procesos del archivo de entrada
+        std::vector<Proceso*> procesos = ArchivoIO::leer(entrada);
+        if (procesos.empty()) {
+            std::cerr<<"El archivo de entrada no contiene procesos validos \n";
+            return 1;
+        }
+
+        //Construiccion de colas de acuerdo a su esquema
+        std::vector<Cola*> colas={
+            new Cola(1,new RR(1)),
+            new Cola(2,new RR(3) ),
+            new Cola(3,new SJF())
+
+        };
+        //Ejecutar simulacion
+        PlanificadorMLQ planificador(procesos,colas);
+        planificador.simular();
+
+        //Escribe resultados y muestra en consola
+        ArchivoIO::escribir(salida,procesos);
+
+        std::cout <<"Simulacion MLQ RR(1) + RR(3) + SJF \n";
+        std::cout << "Entrada: "<<entrada<<" \n";
+        std::cout << "Salida: "<<salida<<" \n";
+        std::cout << "Etiqueta BT AT Q Pr WT CT RT TAT \n";
+
+        double sWT = 0, sCT = 0, sRT = 0, sTAT = 0;
+        for (const Proceso* p : procesos) {
+            std::cout << p->etiqueta << "\t" << p->BT << "  " << p->AT << "  "
+                      << p->Q << "  " << p->Pr << "  " << p->WT << "  "
+                      << p->CT << "  " << p->RT << "  " << p->TAT << "\n";
+            sWT += p->WT; sCT += p->CT; sRT += p->RT; sTAT += p->TAT;
+        }
+        int n = static_cast<int>(procesos.size());
+        std::cout << "\nPromedios -> WT=" << (sWT / n) << " CT=" << (sCT / n)
+                  << " RT=" << (sRT / n) << " TAT=" << (sTAT / n) << "\n";
+
+        //Liberacion dememoria
+
+        for (Cola* c : colas){
+            delete c->politica;
+            delete c;
+        }
+        for (Proceso* p : procesos) {
+            delete p;
+        }
+
+
+
+    }catch (const std::exception& e) {
+        std::cerr<<"Error: "<<e.what()<<"\n";
+        return 1;
     }
-
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

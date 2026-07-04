@@ -17,7 +17,7 @@ public:
 
     //Elige y retira de la lista de listo el proceso a ejecutar
     //Devuelve nullptr si no hay procesos listos
-    virtual Proceso* seleccionar(std:deque<Proceso*>& listos)=0;
+    virtual Proceso* seleccionar(std::deque<Proceso*>& listos)=0;
 
     //Quantum de la politica -1 es si no usa quantum, acá es SJF
     virtual int quantum() const {

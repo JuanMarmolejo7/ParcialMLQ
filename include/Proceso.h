@@ -14,19 +14,19 @@
 class Proceso {
 public:
     std::string etiqueta; //identificador del proceso
-    int BT; //Burst time
-    int AT; // Arrival time
+    double BT; //Burst time
+    double AT; // Arrival time
     int Q; //Numero de cola a la que pertenece
     int Pr; // prioridad (mayor numero=mas prioridad)
 
-    int restante; //tiempo de CPU que le falta por ejecutar
-    int WT; // Waiting time
-    int CT; //Completion time
-    int RT; //Response time (-1 mientras no ejecuta por primera vez)
-    int TAT; //Turn around time
+    double restante; //tiempo de CPU que le falta por ejecutar
+    double WT; // Waiting time
+    double CT; //Completion time
+    double RT; //Response time (-1 mientras no ejecuta por primera vez)
+    double TAT; //Turn around time
     bool finalizado; //True cuando restante llega a 0
 
-    Proceso(std::string etiqueta="", int bt=0, int at=0, int q=1, int pr=0);
+    Proceso(std::string etiqueta="", double bt=0, double at=0, int q=1, int pr=0);
 
 };
 

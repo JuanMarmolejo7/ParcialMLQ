@@ -20,4 +20,5 @@ add_executable(Parcial_Japet
         src/Proceso.cpp
         src/RR.cpp
         src/SJF.cpp
+        src/main.cpp
 )
